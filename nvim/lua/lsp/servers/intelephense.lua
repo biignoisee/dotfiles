@@ -1,25 +1,31 @@
 local license_path = vim.fn.expand("~/.config/intelephense/license.txt")
-local license_key = vim.fn.trim(table.concat(vim.fn.readfile(license_path), "\n"))
+
+local license = ""
+if vim.fn.filereadable(license_path) == 1 then
+	license = table.concat(vim.fn.readfile(license_path), "\n")
+end
 
 return {
-	init_options = {
-		licenceKey = license_key,
+	cmd = { "intelephense", "--stdio" },
+
+	filetypes = {
+		"php",
 	},
+
+	root_markers = {
+		"composer.json",
+		".git",
+	},
+
+	init_options = {
+		licenceKey = license,
+	},
+
 	settings = {
 		intelephense = {
-			client = { maxMemory = 2048 },
-			files = { maxSize = 5000000 },
-			format = { enable = true },
-			diagnostics = {
-				enable = true,
-				undefinedMethods = false,
-				undefinedProperties = false,
+			files = {
+				maxSize = 5000000,
 			},
-			completion = {
-				fullyQualifyImportedNames = true,
-				insertUseDeclaration = true,
-			},
-			environment = { phpVersion = "8.4.0" },
 		},
 	},
 }

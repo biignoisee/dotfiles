@@ -25,4 +25,3 @@ require("blink.cmp").setup({
 		prebuilt_binaries = { download = true },
 	},
 })
-
