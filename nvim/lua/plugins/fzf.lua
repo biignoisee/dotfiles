@@ -25,6 +25,7 @@ vim.keymap.set("n", "<leader>fg", fzf.live_grep, { desc = "Live Grep" })
 vim.keymap.set("n", "<leader>fb", fzf.buffers, { desc = "Buffers" })
 vim.keymap.set("n", "<leader>fc", fzf.colorschemes, { desc = "Colorschemes" })
 vim.keymap.set("n", "<leader>fh", fzf.help_tags, { desc = "Help Tags" })
+vim.keymap.set("n", "<leader>fo", fzf.oldfiles, { desc = "Recent Files" })
 
 -- Reabrir la última búsqueda de fzf (¡salva vidas!)
 vim.keymap.set("n", "<leader>fr", fzf.resume, { desc = "Resume Last FZF" })

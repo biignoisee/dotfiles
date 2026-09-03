@@ -104,7 +104,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- MOTOR DE SERVIDORES (Velocidad y Modularidad)
 -- ============================================================================
 -- 1. Servidores que tienen archivo propio en lua/lsp/servers/
-local configured_servers = { "clangd", "lua_ls", "ts_ls", "efm", "phpantom" }
+local configured_servers = { "lua_ls", "ts_ls", "efm", "intelephense" }
 
 -- 2. Importar servidores generales
 local general_servers = require("lsp.servers.general")
@@ -121,8 +121,11 @@ end
 -- Cargar configuración dinámicamente si existe
 for _, lsp_name in ipairs(configured_servers) do
 	local ok, custom_config = pcall(require, "lsp.servers." .. lsp_name)
-	if ok and type(custom_config) == "table" then
-		vim.lsp.config(lsp_name, custom_config)
+	if ok then
+		if type(custom_config) == "table" then
+			vim.lsp.config(lsp_name, custom_config)
+		end
+		-- si no devuelve tabla (como efm.lua), ya se configuró solo adentro
 	else
 		vim.lsp.config(lsp_name, {})
 	end

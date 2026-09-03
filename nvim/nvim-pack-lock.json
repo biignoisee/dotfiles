@@ -69,6 +69,10 @@
       "rev": "59b50505053f9c45a9febb79e11a56206c3e3901",
       "src": "https://github.com/nvim-neotest/neotest-go"
     },
+    "nord.nvim": {
+      "rev": "80c1e5321505aeb22b7a9f23eb82f1e193c12470",
+      "src": "https://github.com/shaunsingh/nord.nvim"
+    },
     "nvim-lspconfig": {
       "rev": "451d4ef9abd4f0f08e379ef0d55d1c391b6125a7",
       "src": "https://www.github.com/neovim/nvim-lspconfig"
