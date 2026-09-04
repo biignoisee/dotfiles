@@ -1,0 +1,199 @@
+;=====================================================
+;  Polybar - Nord Theme
+;=====================================================
+
+[colors]
+nord0  = #2E3440
+nord1  = #3B4252
+nord2  = #434C5E
+nord3  = #4C566A
+nord4  = #D8DEE9
+nord5  = #E5E9F0
+nord6  = #ECEFF4
+nord7  = #8FBCBB
+nord8  = #88C0D0
+nord9  = #81A1C1
+nord10 = #5E81AC
+nord11 = #BF616A
+nord12 = #D08770
+nord13 = #EBCB8B
+nord14 = #A3BE8C
+nord15 = #B48EAD
+
+; Fondo de la barra un poco más claro que nord0 puro
+; para que se note el tono azulado y no parezca negro
+background = ${colors.nord1}
+background-alt = ${colors.nord2}
+foreground = ${colors.nord6}
+foreground-alt = ${colors.nord4}
+primary = ${colors.nord8}
+alert = ${colors.nord11}
+success = ${colors.nord14}
+warning = ${colors.nord13}
+
+[bar/example]
+monitor = ${env:MONITOR:}
+width = 100%
+height = 24
+radius = 0.0
+fixed-center = true
+
+top = yes
+bottom = no
+override-redirect = false
+
+foreground = ${colors.foreground}
+background = ${colors.background}
+
+line-size = 0
+
+border-top-size = 0
+border-bottom-size = 0
+border-left-size = 0
+border-right-size = 0
+
+padding-left = 1
+padding-right = 1
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = FantasqueSansMono Nerd Font:style=Regular:size=10;2
+font-1 = FantasqueSansMono Nerd Font:style=Bold:size=10;2
+font-2 = FantasqueSansMono Nerd Font:size=13;3
+
+modules-left = i3
+modules-right = volume date battery
+
+tray-position = right
+tray-padding = 0
+tray-detached = false
+tray-maxsize = 14
+tray-scale = 1.0
+tray-background = ${colors.background-alt}
+tray-foreground = ${colors.foreground}
+tray-offset-x = -4
+tray-offset-y = 0
+
+wm-restack = i3
+scroll-up = #i3.next
+scroll-down = #i3.prev
+cursor-click = pointer
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+index-sort = true
+wrapping-scroll = false
+strip-wsnumbers = false
+enable-click = false
+enable-scroll = false
+
+label-focused = %index%
+label-focused-foreground = ${colors.nord0}
+label-focused-background = ${colors.primary}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-foreground = ${colors.foreground-alt}
+label-unfocused-background = ${colors.background-alt}
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-foreground = ${colors.foreground}
+label-visible-background = ${colors.background-alt}
+label-visible-padding = 2
+
+label-urgent = %index%
+label-urgent-foreground = ${colors.nord0}
+label-urgent-background = ${colors.alert}
+label-urgent-padding = 2
+
+; ---- Bloque: volumen (cyan) ----
+[module/volume]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+format-volume-foreground = ${colors.nord0}
+format-volume-background = ${colors.nord8}
+format-volume-padding = 2
+
+ramp-volume-0 = 婢
+ramp-volume-1 = 奄
+ramp-volume-2 = 奔
+
+label-volume = %percentage%%
+
+format-muted-prefix = "婢 "
+format-muted-foreground = ${colors.nord0}
+format-muted-background = ${colors.nord3}
+format-muted-padding = 2
+label-muted = mute
+
+; ---- Bloque: fecha/hora (azul) ----
+[module/date]
+type = internal/date
+interval = 1
+time = "%a %d  %I:%M %P"
+
+format-prefix = " "
+format-prefix-foreground = ${colors.nord0}
+format-prefix-background = ${colors.nord9}
+
+format = <label>
+format-foreground = ${colors.nord0}
+format-background = ${colors.nord9}
+format-padding = 2
+
+label = %time%
+
+; ---- Bloque: batería (verde/rojo si baja) ----
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+poll-interval = 5
+full-at = 99
+low-at = 15
+
+format-charging = <ramp-capacity> <label-charging>
+format-charging-foreground = ${colors.nord0}
+format-charging-background = ${colors.nord14}
+format-charging-padding = 2
+label-charging = %percentage%%
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-foreground = ${colors.nord0}
+format-discharging-background = ${colors.nord14}
+format-discharging-padding = 2
+label-discharging = %percentage%%
+
+format-low = <ramp-capacity> <label-low>
+format-low-foreground = ${colors.nord0}
+format-low-background = ${colors.nord11}
+format-low-padding = 2
+label-low = %percentage%%
+
+format-full = <label-full>
+format-full-foreground = ${colors.nord0}
+format-full-background = ${colors.nord14}
+format-full-padding = 2
+label-full = " 100%"
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+
+[settings]
+throttle-output = 5
+throttle-output-for = 10
+screenchange-reload = true
+compositing-background = over
+compositing-foreground = over
+compositing-overline = over
+compositing-border = over
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
