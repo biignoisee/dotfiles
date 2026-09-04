@@ -37,6 +37,9 @@ vim.pack.add({
 	-- THEMES
 	-- ============================================================================
 	"https://github.com/gbprod/nord.nvim",
+	"https://github.com/nyoom-engineering/nyoom.nvim",
+	"https://github.com/vague-theme/vague.nvim",
+	"https://github.com/olimorris/onedarkpro.nvim",
 	--
 	-- ============================================================================
 	-- EXTRAS

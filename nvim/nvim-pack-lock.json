@@ -25,6 +25,10 @@
       "rev": "aeef62ee97872d2557d25904d160ec93a4a355f8",
       "src": "https://github.com/sainnhe/everforest"
     },
+    "flexoki": {
+      "rev": "8d723bac4a9ac46adfdf99d42155286977aac72a",
+      "src": "https://github.com/kepano/flexoki"
+    },
     "fzf-lua": {
       "rev": "33fe4b6f0c817c4d99a7baeea82c4d17e57efd64",
       "src": "https://www.github.com/ibhagwan/fzf-lua"
@@ -84,6 +88,10 @@
     "nvim-treesitter": {
       "rev": "4916d6592ede8c07973490d9322f187e07dfefac",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nyoom.nvim": {
+      "rev": "f808500883ffc552b53a421139cc1915955759b7",
+      "src": "https://github.com/nyoom-engineering/nyoom.nvim"
     },
     "oil.nvim": {
       "rev": "0fcc83805ad11cf714a949c98c605ed717e0b83e",
