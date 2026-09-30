@@ -26,3 +26,10 @@ vim.keymap.set("n", "-", function()
 	require("plugins.oil")
 	require("oil").open()
 end, { desc = "Open parent directory" })
+
+vim.keymap.set("n", "<leader>rf", function()
+	vim.lsp.buf.execute_command({
+		command = "typescript.goToSourceDefinition",
+		arguments = { vim.uri_from_bufnr(0), vim.lsp.util.make_position_params().position },
+	})
+end, { desc = "Go to source definition (skip .d.ts)" })

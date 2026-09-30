@@ -11,7 +11,7 @@ local function get_saved_theme()
 			return theme:match("^%s*(.-)%s*$")
 		end
 	end
-	return "nord" -- default nuevo
+	return "onedark" -- default nuevo
 end
 
 local function set_transparent()
@@ -56,6 +56,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 local current_theme = get_saved_theme()
 local ok = pcall(vim.cmd.colorscheme, current_theme)
 if not ok then
-	vim.cmd.colorscheme("nord")
+	vim.cmd.colorscheme("default")
 end
 set_transparent()

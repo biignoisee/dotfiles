@@ -6,9 +6,30 @@ do
 	local fixjson = require("efmls-configs.formatters.fixjson")
 	local hadolint = require("efmls-configs.linters.hadolint")
 	local checkmake = require("efmls-configs.linters.checkmake")
-	local clang_format = require("efmls-configs.formatters.clang_format")
 
-	-- Pint no soporta stdin, opera directo sobre el archivo (formatStdin = false)
+	-- Go
+	local gofumpt = {
+		formatCommand = "gofumpt",
+		formatStdin = true,
+	}
+
+	local golangci_lint = {
+		lintCommand = "golangci-lint run --output.text.path=${TMP}",
+		lintStdin = false,
+		lintFormats = {
+			"%-G%f:%l:%c: %m",
+			"%-G%f:%l: %m",
+			"%f:%l:%c: %m",
+		},
+		rootMarkers = {
+			"go.mod",
+			"go.work",
+			".golangci.yml",
+			".golangci.yaml",
+		},
+	}
+
+	-- Pint no soporta stdin, opera directo sobre el archivo
 	local pint = {
 		formatCommand = "vendor/bin/pint --quiet ${INPUT}",
 		formatStdin = false,
@@ -17,8 +38,6 @@ do
 
 	vim.lsp.config("efm", {
 		filetypes = {
-			"c",
-			"cpp",
 			"javascript",
 			"json",
 			"jsonc",
@@ -29,20 +48,35 @@ do
 			"dockerfile",
 			"makefile",
 			"php",
+			"go",
 		},
-		init_options = { documentFormatting = true },
+
+		init_options = {
+			documentFormatting = true,
+		},
+
 		settings = {
 			languages = {
 				c = { clang_format },
 				cpp = { clang_format },
+
 				javascript = { eslint_d, prettier_d },
 				typescript = { eslint_d, prettier_d },
+
 				json = { eslint_d, fixjson },
 				jsonc = { eslint_d, fixjson },
+
 				lua = { luacheck, stylua },
+
 				dockerfile = { hadolint },
 				makefile = { checkmake },
+
 				php = { pint },
+
+				go = {
+					gofumpt,
+					golangci_lint,
+				},
 			},
 		},
 	})

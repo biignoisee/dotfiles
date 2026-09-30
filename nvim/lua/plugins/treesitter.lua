@@ -11,7 +11,6 @@ local setup_treesitter = function()
 
 		-- Formatos de config / infra (docker, k8s, RAG configs, etc.)
 		"json",
-		"jsonc",
 		"yaml",
 		"toml",
 		"dockerfile",
@@ -35,6 +34,10 @@ local setup_treesitter = function()
 		"html",
 		"css",
 		"scss",
+		"graphql",
+
+		-- GO
+		"go",
 
 		-- PHP
 		"php",
